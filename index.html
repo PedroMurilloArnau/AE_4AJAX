@@ -2,40 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link rel="stylesheet" type="text/css" href="css/estilo.css">-->  
     <script type="text/javascript" src="JS/precio.js"></script>
     <script type="text/javascript" src="JS/validacion.js"></script>
+    <script type="text/javascript" src="nuevo.js"></script>
     <title>PazzetoTrocala</title>
     
 </head>
+
 <body>
     <!--Creamos un form-->
     <form id="formulario">
         <h1>Benvenuti alla pizzeria Trocola</h1>
-        <fieldset id="radio">
-            <h3>Seleccion el tamaño de la pizza</h3>
-        <label>Pequeña: </label>
-            <input type="radio" id="pequeña" name="tamaño" value="s"/>
-            <label>Mediana: </label>
-            <input type="radio" id="mediana" name="tamaño" value="m"/>
-            <label>Grande: </label>
-            <input type="radio" id="grande" name="tamaño" value="g"/>
-        </fieldset>
-        </br>
-        <fieldset id="ingredientes">
-            <h3>Selecciona los ingredientes de tu pizza :</h3>
-            <p>Recuerda seleccionar al menos 1 ingrediente, no te pierdas nuestra fantastica miel del bierzo</p>
-            <label>Cebolla: </label>
-            <input type="checkbox" id="cebolla" class="checkbox" name="cebolla" value="s"/>
-            <label>Piña: </label>
-            <input type="checkbox" id="bacon" class="checkbox" name="bacon" value="s"/>
-            <label>Beicon: </label> 
-            <input type="checkbox" id="piña" class="checkbox" name="piña" value="s"/>
-            <label>Miel: </label>
-            <input type="checkbox" id="miel" class="checkbox" name="miel" value="s"/>
-        </fieldset>
+        
         <label>Nombre : </label>
         <input type="text" id="nombre" name="nombre" placeholder="nombre"/>
         </br>
@@ -49,9 +30,12 @@
         <input type="text" id="email" name="email" placeholder="De tipo [ ********@*****.(es,com,...)] "/>
         </br>
         <label>Enviar pedido: </label>
-        <input type="submit" value="Mandar Formulario">
+        <input type="submit" onclick="validacion()" value="Mandar Formulario">
     </form>
     <p id="reporte"></p>
     <p id="precio_total"></P>
+    <table id="resultadoBusqueda"></table>
+    <div id="formi"></div>
+    <input type="button" onclick="cargarinf()" value="Cargar">
 </body>
 </html>

@@ -33,8 +33,4 @@ if(mensaje !== ""){
     alert( mensaje)
     return false;
 }
-
-}
-window.onload = function(){
-    formulario.onsubmit = validacion;
 }
