@@ -2,7 +2,11 @@
     "INGREDIENTES":[
         {"NOMBRE":"cebolla","PRECIO":1},
         {"NOMBRE":"piña","PRECIO":1},
+<<<<<<< HEAD
         {"NOMBRE":"bacon","PRECIO":3},
+=======
+        {"NOMBRE":"bacon","PRECIO":1},
+>>>>>>> 30cea00b2be65429673cf0799d6aa06ff3fb7cd7
         {"NOMBRE":"miel","PRECIO":1}
 
 
