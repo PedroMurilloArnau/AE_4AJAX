@@ -27,14 +27,10 @@ if(telefono.value.trim() == "") {
     }
 if(mensaje === ""){
     calcuprecio()
-    return true;  
+    return false;  
 }
 if(mensaje !== ""){
     alert( mensaje)
     return false;
 }
-
-}
-window.onload = function(){
-    formulario.onsubmit = validacion;
 }

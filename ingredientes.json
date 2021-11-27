@@ -1,0 +1,17 @@
+{"PIZZERIA":{
+    "INGREDIENTES":[
+        {"NOMBRE":"cebolla","PRECIO":1},
+        {"NOMBRE":"piña","PRECIO":1},
+        {"NOMBRE":"bacon","PRECIO":3},
+        {"NOMBRE":"miel","PRECIO":1}
+
+
+    ]
+    ,"TAMAÑO":[
+        {"NOMBRE":"pequeña","VALUE":"s","PRECIO":"5"},
+        {"NOMBRE":"mediana","VALUE":"s","PRECIO":"10"},
+        {"NOMBRE":"grande","VALUE":"s","PRECIO":"15"}
+    ]
+    }
+
+}
