@@ -87,7 +87,7 @@ console.log(parseInt(tamaño[0].PRECIO))
 var sum = document.getElementsByClassName("tamaño")
 for( i=0; i< sum.length;++i){
     if(sum[i].checked){
-        total = total + parseInt(tamaño[i].PRECIO)
+         total = total + parseInt(tamaño[i].PRECIO)
     }
 }
 
