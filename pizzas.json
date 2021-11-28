@@ -1,0 +1,36 @@
+{
+    "CATALOG": {
+        "TAMAÑO": [
+            {
+                "TAMANO": "Pequeña",
+                "PRECIO": "5€"
+            },
+            {
+                "TAMANO": "Mediana",
+                "PRECIO": "10€"
+            },
+            {
+                "TAMANO": "Grande",
+                "PRECIO": "15€"
+            }
+        ],
+        "INGREDIENTES": [
+            {
+                "INGREDIENTE": "Tomate",
+                "PRECIO": "1€"
+            },
+            {
+                "INGREDIENTE": "Atún",
+                "PRECIO": "1€"
+            },
+            {
+                "INGREDIENTE": "Aceitunas",
+                "PRECIO": "1€"
+            },
+            {
+                "INGREDIENTE": "Albahaca",
+                "PRECIO": "1€"
+            }
+        ]       
+    }
+}
