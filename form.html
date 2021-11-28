@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>FormJS</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script type="application/javascript" src="form3.js"></script>
+    
+</head>
+<body>
+   
+
+        <h1>Haz tu pedido! :)</h1>
+
+        <label for="name">Nombre: </label>
+        <input type="text" id="name" name="user_name" placeholder="Nombre">
+
+        <br>
+
+        <h2>Pedido: </h2>
+        <br>
+        <button id="btnBuscarTamaño"  onclick="cargarTamaños()">Tamaños</button>
+        <table id ="resultadoTamaño"></table>
+        <br>
+        <button id="btnBuscarIngre"  onclick="cargarIngredientes()">Ingredientes</button>
+        <table id ="resultadoIngredientes"></table>
+        <br>
+        <button id="btnRefrescar"  onclick="cargarIngredientes(), cargarTamaños()">Refresh</button>
+        <br>
+        <button id="btnCalculoPrecio"  onclick="calcularPrecio()">Calcular Precio</button>
+
+
+    
+    
+</body>
+</html>

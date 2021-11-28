@@ -1,0 +1,38 @@
+*{box-sizing:border-box;}
+
+button{
+
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+table{
+
+    width:400px;
+	padding: 8px;
+	border-radius:10px;
+	margin:auto;
+	background-color:rgb(143, 124, 240);
+
+}
+
+table input[type="text"]{
+	width:180px;
+	padding:3px 10px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;
+	margin:8px 0;
+	display:inline-block;
+}
+
+
+
+.textarea{
+
+    border-radius:3px;
+	background-color:#f6f6f6;
+    display:block;
+
+
+}
