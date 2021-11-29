@@ -3,51 +3,44 @@ const RECURSO_VALID = "2021_11_PIZZAS.json";
 
 let pizzaJson;
 
-//(document.getElementsByName("enviar"))[0].onsubmit = peticionAsincronaValid;
-
-
-
-function validar(objetoJson) {
-
-    pizzaJson = JSON.parse(objetoJson);
+function validar(pizzaJson) {
 
     let mensaje = "";
     let precioTotal = "";
 
+    $("#aviso").text("");
+
     if($("[name=nombre]")[0].value.trim() == "") {
-        mensaje += "Rellena el nombre. \n"
+        $("#aviso").append("<p>Rellena el nombre.</p>");
     } else {
         reNombre = /^[A-Z]/;
         if ($("[name=nombre]")[0].value.trim().match(reNombre) == null) {
-            //mensaje += "Debe introducir su nombre con mayúscula inicial. \n"
-            //$("#aviso").append("<p>Debe introducir su nombre con mayúscula inicial.</p>");
             $("<p>Debe introducir su nombre con mayúscula inicial.</p>").appendTo($("#aviso"));
         }
     }
 
     if($("[name=direccion]")[0].value.trim() == "") {
-        //mensaje += "Rellena la dirección. \n"
         $("#aviso").append("<p>Rellena la dirección.</p>")
     }
 
     if($("[name=telefono]")[0].value.trim() == "") {
-        mensaje += "Rellena el teléfono. \n"
+        $("#aviso").append("<p>Rellena el teléfono.</p>");
     } else {
         /* Los teléfonos en España tienen 9 cifras,
         los móviles comienzan por 6 ó 7,
         y los teléfonos fijos comienzan por 8 o por 9 */
-        reTelf = /^[6-9][0-9]{8}/;
-        if ($("[name=telefono]")[0].value.trim().match(reTelf) == null || $("[name=telefono]")[0].value.trim().length > 9) {
-            mensaje += "Formato de teléfono incorrecto (deben ser 9 cifras). \n"
+        reTelf = /^[6-9][0-9]{8}$/;
+        if ($("[name=telefono]")[0].value.trim().match(reTelf) == null) {
+            $("#aviso").append("<p>Formato de teléfono incorrecto (deben ser 9 cifras).</p>");
         }
     }
 
     if($("[name=email]")[0].value.trim() == "") {
-        mensaje += "Rellena el email. \n"
+        $("#aviso").append("<p>Rellena  el email.</p>");
     } else {
         reEmail = new RegExp('^([0-9A-Za-z]+)@([0-9A-Za-z]+.[0-9A-Za-z]+)$');
         if ($("[name=email]")[0].value.trim().match(reEmail) == null) {
-            mensaje += "Formato de email incorrecto. \n"
+            $("#aviso").append("<p>Formato de email incorrecto.</p>");
         }
     }
 
@@ -65,7 +58,7 @@ function validar(objetoJson) {
         }
     }
     if(!seleccionado) {
-        mensaje += "Elige un tamaño de pizza. \n";
+        $("#aviso").append("<p>Elige un tamaño de pizza.</p>");
     } else {
         precio = parseFloat(pizzaTamJson[opcion].PRICE);
     }
@@ -80,52 +73,43 @@ function validar(objetoJson) {
         }
     }
     if (!atLeastOneChecked) {
-        mensaje += "Debes elegir al menos un ingrediente adicional. \n"
+        $("#aviso").append("<p>Debes elegir al menos un ingrediente adicional.</p>");
     }
 
-    $("#aviso").text(mensaje);
-    //aviso.innerText = mensaje;
     precio = Math.round(precio*100) / 100;
 
-    if (mensaje === "") {
-        precioTotal = "El total de tu pedido son " + precio + " €.";
-        total.innerText = precioTotal;
+    if ($("#aviso").html() === "") {
+        $("#total").html("El total de tu pedido son " + precio + " €.");        
     } else {
-        total.innerText = "";
+        $("#total").html("");
     }
-
     
     return false;
 }
 
 
 
-function procRespuestaValid(jsonDoc) {
-    console.log(jsonDoc)
-    pizzaJson = JSON.parse(jsonDoc);
-    validar(pizzaJson);
+function procRespuestaValid(jsonDocParsed) {
+    console.log(jsonDocParsed)
+    validar(jsonDocParsed);
+}
+
+function procErrorValid() {
+    alert("A toda Pizza, esto no funciona!");
 }
 
 
-function peticionAsincronaValid() {
-    
-    let xmlHttp2 = new XMLHttpRequest();
-
-    xmlHttp2.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                validar(this.responseText);
-            } else {
-                alert("A toda Pizza, esto no funciona!");
-            }
+function peticAJAXvalid(){
+    $.ajax({
+            'type'  : 'GET',
+            'url'   : URL_DESTINO + RECURSO,
+            'async' : true,
         }
-    }    
-
-    xmlHttp2.open('GET', URL_DESTINO_VALID + RECURSO_VALID, true);
-    xmlHttp2.send(null);
+    ).done(procRespuestaValid)
+    .fail(procErrorValid)
 }
 
 
 $(function() {
-    $("#envioform").click(peticionAsincronaValid);
+    $("#envioform").click(peticAJAXvalid);
 })

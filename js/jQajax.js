@@ -1,55 +1,34 @@
 const URL_DESTINO = "http://localhost:5501/Act4/"
 const RECURSO = "2021_11_PIZZAS.json"
 
-
-function enviarPeticionAsincrona() {
-
-    let xmlHttp = new XMLHttpRequest()
-
-    xmlHttp.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                procesarRespuesta(this.responseText);
-            } else {
-                alert("A toda Pizza, esto no funciona!");
-            }
+function peticionAJAX(){
+    $.ajax({
+            'type'  : 'GET',
+            'url'   : URL_DESTINO + RECURSO,
+            'async' : true,
         }
-    }
-
-    xmlHttp.open('GET', URL_DESTINO + RECURSO, true);
-    xmlHttp.send(null);
+    ).done(respuestaTamanosIngredientes)
+    .fail(procError)
 }
 
+function procError() {
+    alert("No puedo cargar tamaños e ingredientes disponibles!");
+}
 
-function procesarRespuesta(jsonDoc) {
-    let pizzaJson = JSON.parse(jsonDoc);
+function respuestaTamanosIngredientes(pizzaJson) {
     
     // Borrar el contenido de las opciones de las pizzas
     let tamanoPizzaHtml = document.getElementById("medidasPizza");
-    removeAllChildNodes(tamanoPizzaHtml);
+    /*removeAllChildNodes(tamanoPizzaHtml);*/
+    $("#medidasPizza").html("");
 
     // Rellenar las opciones de las pizzas
     let tamanosPizza = pizzaJson.PIZZASDATA.SIZES;
 
-    for (let size of tamanosPizza) {
-
-        let filaOpcion = document.createElement("p");
-        let opcionTamano = document.createElement("input");
-        let opcionTamanoParr = document.createElement("label");
-
-        opcionTamano.type = "radio";
-        opcionTamano.name = "medida";
-        opcionTamano.value = size.VALUE;
-        opcionTamano.id = size.VALUE;
-
-        opcionTamanoParr.htmlFor = size.VALUE;
-        opcionTamanoParr.textContent = " " + size.NAME + " (" + size.PRICE + "€)";
-
-        filaOpcion.appendChild(opcionTamano);
-        filaOpcion.appendChild(opcionTamanoParr);
-
-        tamanoPizzaHtml.appendChild(filaOpcion);
-    }
+    $.each(tamanosPizza, function(i, tam){
+        let filaTamano = $(`<p><input id="${tam.VALUE}" type="radio" name="medida" value="${tam.VALUE}"><label for="${tam.VALUE}"> ${tam.NAME} (${tam.PRICE}€)</label></p>`);
+        filaTamano.appendTo("#medidasPizza");
+    })
 
     // Borrar el contenido de los ingredientes adicionales
     let ingredientesHtml = document.getElementById("ingredientesPizza");
@@ -58,29 +37,10 @@ function procesarRespuesta(jsonDoc) {
     // Rellenar los ingredientes extra
     let ingredientesExtra = pizzaJson.PIZZASDATA.EXTRAING;
 
-    for (let extra of ingredientesExtra) {
-
-        let filaIngred = document.createElement("p");
-        let casillaIngred = document.createElement("input");
-        let descripIngred = document.createElement("label");
-
-        //input
-        casillaIngred.type = "checkbox";
-        casillaIngred.id = extra.ID;
-        casillaIngred.name = "ingrediente";
-        casillaIngred.value = extra.VALUE;
-        casillaIngred.className = "ingred-extra";
-
-        //label
-        descripIngred.htmlFor = extra.ID;
-        descripIngred.textContent = " " + extra.NAME + " (+" + extra.PRICE + "€)";
-
-        filaIngred.appendChild(casillaIngred);
-        filaIngred.appendChild(descripIngred);
-
-        ingredientesPizza.appendChild(filaIngred);
-
-    }
+    $.each(ingredientesExtra, function(i, ing){
+        let filaIngredientes = $(`<p><input id="${ing.ID}" class="ingred-extra" type="checkbox" name="ingrediente" value="${ing.VALUE}"><label for="${ing.VALUE}"> ${ing.NAME} (${ing.PRICE}€)</label></p>`);
+        filaIngredientes.appendTo("#ingredientesPizza");
+    })
 }
 
 /* basado en: https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/ */
@@ -92,6 +52,6 @@ function removeAllChildNodes(parent) {
 }
 
 $(function() {
-    enviarPeticionAsincrona();
-    $("refrescar").click(enviarPeticionAsincrona);
+    peticionAJAX();
+    $("#refrescar").click(peticionAJAX);
 })
