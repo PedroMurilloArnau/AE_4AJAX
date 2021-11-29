@@ -1,0 +1,20 @@
+body{
+    width: 80%;
+}
+table{
+    border: 1px solid black;
+}
+table th{
+    border: 2px solid red;
+}
+table td{
+    border:  1px solid green;
+}
+
+form input{
+    display: inline-block;
+}
+form p{
+    display: inline;
+}
+

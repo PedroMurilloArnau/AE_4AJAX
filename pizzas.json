@@ -1,0 +1,36 @@
+{
+    "CATALOG": {
+        "PIZZAS": [
+            {
+                "TAMANO": "pequeña",
+                "PRECIO": "5"
+            },
+            {
+                "TAMANO": "mediana",
+                "PRECIO": "10"
+            },
+            {
+                "TAMANO": "familiar",
+                "PRECIO": "15"
+            }
+        ],
+        "INGREDIENTES": [
+            {
+                "INGREDIENTE": "jamon",
+                "PRECIO": "1"
+            },
+            {
+                "INGREDIENTE": "champi",
+                "PRECIO": "1"
+            },
+            {
+                "INGREDIENTE": "pina",
+                "PRECIO": "1"
+            },
+            {
+                "INGREDIENTE": "aceitunas",
+                "PRECIO": "1"
+            }
+        ]       
+    }
+}
