@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" type="text/css" href="css/estilo.css">-->  
-    <!--<script type="text/javascript" src="JS/precio.js"></script>--> 
-    <!--<script type="text/javascript" src="JS/validacion.js"></script>--> 
-    <!--<script type="text/javascript" src="nuevoJQ.js"></script>-->
+    <!--<script type="text/javascript" src="JS/validacionJQ.js"></script>-->
     <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
     <title>PazzetoTrocala JQuery</title>
-<script type="text/javascript">
+    <script type="text/javascript">
 
     const URL_DESTINO = "http://localhost/AE_4AJAX/"
     const RECURSO = "ingredientes.json"
-    
+
+    $("#formulario").submit(validacionJQ())
     $(cargarinfo)
 
     function cargarinfo(){
         $("#JQuery").click(peticionAJAX)
         $("#Calc").click(calculprec)
+        
+    
     }
     
     function peticionAJAX(){
@@ -44,7 +44,8 @@
 
     $.each(tamaño,function(i,tam){
         let tr = $(`<label>${tam.NOMBRE}</label>
-                <input type="radio" id ="${i}" class="tamaño" name="tamaño" value="${tam.VALUE}"
+                <input type="radio" id ="${tam.NOMBRE}" class="tamaño"
+                 name="tamaño" value="${tam.VALUE}"
                 >`)
         tr.appendTo("#formo")
     
@@ -53,7 +54,8 @@
     $("</br>").appendTo("#formo")
     $.each(ingredientess,function(i,ind){
         let tr = $(`<label>${ind.NOMBRE}</label>
-                <input type="checkbox" id ="${ind.NOMBRE}" class="checkbox" name="${ind.NOMBRE}" value="s"
+                <input type="checkbox" id ="${ind.NOMBRE}" 
+                class="checkbox" name="${ind.NOMBRE}" value="s"
                 >`)
         tr.appendTo("#formo")
     
@@ -92,6 +94,7 @@
 } 
     
 </script>
+
     
 </head>
 
@@ -113,7 +116,7 @@
         <input type="text" id="email" name="email" placeholder="De tipo [ ********@*****.(es,com,...)] "/>
         </br>
         <label>Enviar pedido: </label>
-        <input type="submit" onclick="validacion()" value="Mandar Formulario">
+        <input id="submit" type="submit"  value="Mandar Formulario">
     </form>
     <p id="reporte"></p>
     <p id="precio_total"></P>
