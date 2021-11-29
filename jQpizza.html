@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/jQajax.js"></script>
+    <script type="text/javascript" src="js/jQvalid.js"></script>
+    <title>Pide tu pizza</title>
+</head>
+<body>
+    <form id="pizzaweb" action="" method="post" name="pedido">
+
+        <fieldset>
+
+        <legend>Rellena los datos de tu pedido</legend>
+        
+        <p><label for="nombre">Nombre: </label>
+        <input type="text" id="nombre" name="nombre"  placeholder="Indica tu nombre completo"/></p>
+        
+        <p><label for="direccion">Dirección: </label>
+        <input type="text" id="direccion" name="direccion"  placeholder="Dirección de entrega"/></p>
+        
+        <p><label for="telefono">Teléfono: +34</label>
+        <input type="text" id="telefono" name="telefono"  placeholder="Teléfono de contacto"/></p>
+        
+        <p><label for="email">Email: </label>
+        <input type="text" id="email" name="email"  placeholder="Dirección de correo electrónica"/></p>
+
+        <input type="button" id="refrescar" name="refrescar" value="Refrescar datos"/> 
+
+        <label for="medida" id="medida">Tamaño de la pizza:</label>
+        <div id="medidasPizza">
+            <!--p><input type="radio" name="medida" id="S" value="S"/><label for="S"> Pequeña</label></p>
+            <p><input type="radio" name="medida" id="M" value="M"/><label for="M"> Mediana</label></p>
+            <p><input type="radio" name="medida" id="L" value="L"/><label for="L"> Grande</label></p-->
+        </div>
+
+        <p>Elige ingredientes adicionales (elige al menos uno):</p>
+        <div id="ingredientesPizza">
+            <!--p><input type="checkbox" id="jam" name="ingrediente" value="J"/><label for="jam"> Jamón</label></p>
+            <p><input type="checkbox" id="champ" name="ingrediente" value="C"/><label for="champ"> Champiñón</label></p>
+            <p><input type="checkbox" id="pin" name="ingrediente" value="P"/><label for="pin"> Piña</label></p>
+            <p><input type="checkbox" id="aceit" name="ingrediente" value="A"/><label for="aceit"> Aceitunas</label></p-->
+        </div>
+
+        </fieldset>
+
+        <input type="button" id="envioform" name="enviar" value="Confirmar pedido"/> 
+
+    </form>
+
+    <div id="aviso"></div>
+    <p id="total"></p>
+    
+</body>
+</html>
