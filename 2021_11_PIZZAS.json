@@ -1,0 +1,47 @@
+{
+    "PIZZASDATA": {
+      "SIZES": [
+        {
+          "NAME": "Pequeña",
+          "VALUE": "S",
+          "PRICE": "5"
+        },
+        {
+          "NAME": "Mediana",
+          "VALUE": "M",
+          "PRICE": "10"
+        },
+        {
+          "NAME": "Grande",
+          "VALUE": "L",
+          "PRICE": "15"
+        }
+      ],
+      "EXTRAING": [
+        {
+          "NAME": "Jamón",
+          "VALUE": "J",
+          "ID": "jam",
+          "PRICE": "1.2"
+        },        
+        {
+          "NAME": "Champiñón",
+          "VALUE": "C",
+          "ID": "champ",
+          "PRICE": "1.5"
+        },        
+        {
+          "NAME": "Piña",
+          "VALUE": "P",
+          "ID": "pin",
+          "PRICE": "1.25"
+        },        
+        {
+          "NAME": "Aceitunas",
+          "VALUE": "A",
+          "ID": "aceit",
+          "PRICE": "1.03"
+        }
+      ]
+    }
+  }

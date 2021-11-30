@@ -1,0 +1,11 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#aviso {
+    color: red;
+}
+
+input[type="button"] {
+    display: block;
+}
